@@ -70,9 +70,12 @@ printf("\n Thank you for using Star Quant. Goodbye! \n");
 
 #ifdef __linux__
 #define LOCALTIME_S(x, y) localtime_r(y, x)
+#elif defined(__MACH__) && defined(__APPLE__)
+#define LOCALTIME_S(x, y) localtime_r(y, x)
 #else
 #define LOCALTIME_S(x, y) localtime_s(x, y)
 #endif
+
 #define DATE_FORMAT "%Y-%m-%d"
 #define DATE_FORMAT_COMPACT "%Y%m%d"
 #define DATE_FORMAT_CLEAN  "%4d-%02d-%02d"

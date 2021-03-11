@@ -32,7 +32,7 @@ target_link_libraries(starquant
   ${YAMLCPP_LIBRARY} 
   ${FMT_LIBRARIES} 
   ${NANOMSG_LIBRARY_SHARED}
-  LinuxDataCollect 
+  # LinuxDataCollect 
   thosttraderapi 
   thostmduserapi 
   TapQuoteAPI 

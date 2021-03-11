@@ -28,6 +28,7 @@
 #include <chrono>
 #include <thread>
 #include <fstream>
+#include <chrono>
 #include <boost/locale.hpp>
 #include <boost/date_time.hpp>
 #include <boost/date_time/local_time/local_time.hpp>
@@ -378,6 +379,15 @@ void msleep(uint64_t _ms) {
     string nowMS() {
         char buf[128] = {};
 #ifdef __linux__
+        struct timespec ts = { 0, 0 };
+        struct tm tm = {};
+        char timbuf[64] = {};
+        clock_gettime(CLOCK_REALTIME, &ts);
+        time_t tim = ts.tv_sec;
+        localtime_r(&tim, &tm);
+        strftime(timbuf, sizeof(timbuf), "%F %T", &tm);
+        snprintf(buf, 128, "%s.%03d", timbuf, (int32_t)(ts.tv_nsec / 1000000));
+#elif defined(__MACH__) && defined(__APPLE__)
         struct timespec ts = { 0, 0 };
         struct tm tm = {};
         char timbuf[64] = {};

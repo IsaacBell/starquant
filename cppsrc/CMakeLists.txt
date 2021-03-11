@@ -1,5 +1,5 @@
 # the minimum version of CMake required
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 PROJECT(StarQuantCpp C CXX)
 # required for unit testing using CMake's ctest command
 LIST(APPEND CMAKE_MODULE_PATH  ${StarQuantCpp_SOURCE_DIR}/cmake/modules)
@@ -23,6 +23,9 @@ find_package(nanomsg REQUIRED)
 find_package(libmongoc-1.0 REQUIRED)
 find_package(log4cplus REQUIRED)
 find_package(fmt REQUIRED)
+
+cmake_policy(SET CMP0021 OLD)
+set(CMAKE_MACOSX_RPATH ON)
 
 INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIR})
 # INCLUDE_DIRECTORIES(${RAPIDJSON_INCLUDE_DIRS})

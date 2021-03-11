@@ -64,6 +64,31 @@ Manjaro（arch，Linux 4.14)，python 3.7.2，gcc 8.2, anaconda 5.2
 
 compile files in cppsrc:
 
+Install dependencies:
+```
+# On OSX
+$ brew install boost-python  # If using Python 2
+$ brew install boost-python3 # If using Python 3
+
+$ brew install yaml-cpp
+$ brew install log4cplus
+$ brew install nanomsg
+
+$ brew install mongo-c-driver
+$ brew link mongo-c-driver --overwrite
+
+$ curl -LO https://github.com/mongodb/mongo-c-driver/releases/download/1.0.0/mongo-c-driver-1.0.0.tar.gz
+
+$ tar xzf mongo-c-driver-1.0.tar.gz
+
+$ mkdir tmp && cd tmp # optional, build MongoDB in a temp folder
+$ cd mongo-c-driver-1.0.0
+$ ./configure
+$ make
+$ sudo make install
+```
+
+
 ```
 $ cd cppsrc
 $ mkdir build
