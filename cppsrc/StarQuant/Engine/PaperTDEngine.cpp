@@ -312,7 +312,7 @@ void PaperTDEngine::insertOrder(shared_ptr<PaperOrderMsg> pmsg) {
         // auto pmsgout = make_shared<ErrorMsg>(pmsg->source_, name_,
         // 	MSG_TYPE_ERROR_INSERTORDER,
         // 	to_string(o->clientOrderID_));
-        messenger_->send(pos);
+        messenger_->send(pos); C:\Users\isaac\Source\Repos\starquant\cppsrc\build
         LOG_ERROR(logger,"Paper TD order insert error: due to DM dont have markets info");
         return;
     }
